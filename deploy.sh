@@ -8,6 +8,8 @@ SCRIPT_NAME=$(basename "$0")
 find . -mindepth 1 \( -name "$SCRIPT_NAME" -o -name ".git" \) -prune -o -exec rm -rf {} +
 
 # 2. Copy 'dist' from Docker container
+docker exec -it  modern_portfolio-portfolio-1 npm run build
+
 docker cp modern_portfolio-portfolio-1:/app/dist /mnt/r/Portfolio/portfolio-deploy/Muhammad-NSQ.github.io/
 
 # 3. Copy contents of 'dist' into current directory
